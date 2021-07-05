@@ -2,6 +2,7 @@ package net.kunmc.lab.sometimescreativemode.config;
 
 import net.kunmc.lab.sometimescreativemode.SometimesCreativeMode;
 import net.kunmc.lab.sometimescreativemode.util.DecorationConst;
+import net.kunmc.lab.sometimescreativemode.util.MessageUtil;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -70,7 +71,7 @@ public class Config {
             int value = Integer.parseInt(arg);
             survivalTime = new SurvivalTime(value);
 
-            sender.sendMessage(DecorationConst.GREEN + "サバイバルモードの時間を" + survivalTime.value() + "秒に設定しました");
+            MessageUtil.sendAll(DecorationConst.GREEN + "サバイバルモードの時間を" + survivalTime.value() + "秒に設定しました");
             saveChange(SURVIVAL_TIME_PATH, value);
 
         } catch (NumberFormatException e) {
@@ -85,7 +86,7 @@ public class Config {
         try {
             int value = Integer.parseInt(arg);
             creativeTime = new CreativeTime(value);
-            sender.sendMessage(DecorationConst.GREEN + "クリエイティブモードの時間を" + creativeTime.value() + "秒に設定しました");
+            MessageUtil.sendAll(DecorationConst.GREEN + "クリエイティブモードの時間を" + creativeTime.value() + "秒に設定しました");
             saveChange(CREATIVE_TIME_PATH, value);
         } catch (NumberFormatException e) {
             sender.sendMessage(DecorationConst.RED + "引数が不正です");

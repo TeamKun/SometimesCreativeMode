@@ -48,7 +48,6 @@ public class Handler implements CommandExecutor {
             }
             return true;
         }
-
         return false;
     }
 }
