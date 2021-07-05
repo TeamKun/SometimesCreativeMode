@@ -1,14 +1,10 @@
 package net.kunmc.lab.sometimescreativemode.game;
 
-import net.kunmc.lab.sometimescreativemode.util.DecorationConst;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
-import org.bukkit.entity.Player;
 
-import java.util.Collection;
-
-public class logic {
+public class Logic {
     /**
      * スペクテイター以外のプレイヤーのゲームモードを切り替える
      * */

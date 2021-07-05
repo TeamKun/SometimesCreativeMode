@@ -5,11 +5,15 @@ import net.kunmc.lab.sometimescreativemode.util.DecorationConst;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import java.io.IOException;
-
 public class Config {
 
     static FileConfiguration config;
+
+    /** path: サバイバルモードの時間 */
+    private static final String SURVIVAL_TIME_PATH = "survivalTime";
+
+    /** path: クリエイティブモードの時間 */
+    private static final String CREATIVE_TIME_PATH = "creativeTime";
 
     /** サバイバルモードの時間 */
     private static SurvivalTime survivalTime;
@@ -26,8 +30,8 @@ public class Config {
         //　コンフィグファイルを取得
         config = SometimesCreativeMode.plugin.getConfig();
 
-        survivalTime = new SurvivalTime(config.getInt("survivalTime"));
-        creativeTime = new CreativeTime(config.getInt("creativeTime"));
+        survivalTime = new SurvivalTime(config.getInt(SURVIVAL_TIME_PATH));
+        creativeTime = new CreativeTime(config.getInt(CREATIVE_TIME_PATH));
     }
 
     /**
@@ -67,7 +71,7 @@ public class Config {
             survivalTime = new SurvivalTime(value);
 
             sender.sendMessage(DecorationConst.GREEN + "サバイバルモードの時間を" + survivalTime.value() + "秒に設定しました");
-            saveChange("survivalTime", value);
+            saveChange(SURVIVAL_TIME_PATH, value);
 
         } catch (NumberFormatException e) {
             sender.sendMessage(DecorationConst.RED + "引数が不正です");
@@ -82,7 +86,7 @@ public class Config {
             int value = Integer.parseInt(arg);
             creativeTime = new CreativeTime(value);
             sender.sendMessage(DecorationConst.GREEN + "クリエイティブモードの時間を" + creativeTime.value() + "秒に設定しました");
-            saveChange("creativeTime", value);
+            saveChange(CREATIVE_TIME_PATH, value);
         } catch (NumberFormatException e) {
             sender.sendMessage(DecorationConst.RED + "引数が不正です");
         }

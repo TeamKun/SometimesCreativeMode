@@ -25,14 +25,10 @@ public final class SometimesCreativeMode extends JavaPlugin {
 
         // タスク
         Manager.startTask();
-
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
         saveConfig();
     }
-
-
 }

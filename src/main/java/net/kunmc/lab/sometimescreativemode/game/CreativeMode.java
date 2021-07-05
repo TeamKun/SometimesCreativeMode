@@ -2,8 +2,6 @@ package net.kunmc.lab.sometimescreativemode.game;
 
 import net.kunmc.lab.sometimescreativemode.config.Config;
 import net.kunmc.lab.sometimescreativemode.config.CreativeTime;
-import net.kunmc.lab.sometimescreativemode.util.DecorationConst;
-import net.kunmc.lab.sometimescreativemode.util.MessageUtil;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
 
@@ -23,14 +21,15 @@ public class CreativeMode implements State {
     }
 
     public State execute() {
-        logic.changeGameMode(GameMode.CREATIVE);
+        Logic.changeGameMode(GameMode.CREATIVE);
 
         if (timeLimit.count()) {
-            logic.clearActionBar();
+            Logic.clearActionBar();
             return SurvivalMode.initialize();
         }
-        logic.setActionBar("残り" + (timeLimit.timeLeft() + 1)  + "秒");
-        logic.playSound(Sound.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON);
+
+        Logic.setActionBar("残り" + (timeLimit.timeLeft() + 1)  + "秒");
+        Logic.playSound(Sound.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON);
 
         return this;
     }

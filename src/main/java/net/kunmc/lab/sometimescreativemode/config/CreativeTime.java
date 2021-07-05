@@ -1,7 +1,6 @@
 package net.kunmc.lab.sometimescreativemode.config;
 
 public class CreativeTime extends TimeLimit{
-
     CreativeTime(int limit) {
         if (limit <= 0) {
             limit = 1;

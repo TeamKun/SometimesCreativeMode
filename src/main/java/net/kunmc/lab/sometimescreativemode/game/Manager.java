@@ -3,11 +3,10 @@ package net.kunmc.lab.sometimescreativemode.game;
 import net.kunmc.lab.sometimescreativemode.SometimesCreativeMode;
 import net.kunmc.lab.sometimescreativemode.util.DecorationConst;
 import net.kunmc.lab.sometimescreativemode.util.MessageUtil;
-import org.bukkit.command.CommandSender;
+import org.bukkit.GameMode;
 import org.bukkit.scheduler.BukkitTask;
 
 public class Manager {
-
     /** ゲームタスク */
     static BukkitTask task;
     /** ゲームの状態 */
@@ -33,6 +32,7 @@ public class Manager {
 
         state = null;
         MessageUtil.sendAll(DecorationConst.GREEN + "ゲームを終了しました");
+        Logic.changeGameMode(GameMode.SURVIVAL);
         return;
     }
 
