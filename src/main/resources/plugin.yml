@@ -2,3 +2,12 @@ name: SometimesCreativeMode
 version: ${project.version}
 main: net.kunmc.lab.sometimescreativemode.SometimesCreativeMode
 api-version: 1.16
+commands:
+  sometimescreative:
+    description: sometimescreative
+    usage: |-
+      /sometimescreative - ゲームの開始と停止を切り替えます
+      /sometimescreative config - コンフィグを表示します
+      /sometimescreative config creative-time <整数> - クリエイティブモードの時間を設定します
+      /sometimescreative config survival-time <整数> - サバイバルモードの時間を設定します
+    default: op

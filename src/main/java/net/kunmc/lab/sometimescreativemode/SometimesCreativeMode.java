@@ -1,13 +1,22 @@
 package net.kunmc.lab.sometimescreativemode;
 
+import net.kunmc.lab.sometimescreativemode.command.CommandData;
+import net.kunmc.lab.sometimescreativemode.command.CommandHandler;
+import net.kunmc.lab.sometimescreativemode.command.TabComplete;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SometimesCreativeMode extends JavaPlugin {
 
+    /** プラグインオブジェクト */
+    public static SometimesCreativeMode plugin;
+
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        plugin = this;
 
+        // コマンド
+        getCommand(CommandData.MAIN.commandName()).setExecutor(new CommandHandler());
+        getCommand(CommandData.MAIN.commandName()).setTabCompleter(new TabComplete());
     }
 
     @Override
