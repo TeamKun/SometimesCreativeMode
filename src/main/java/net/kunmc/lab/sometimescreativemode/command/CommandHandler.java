@@ -1,5 +1,6 @@
 package net.kunmc.lab.sometimescreativemode.command;
 
+import net.kunmc.lab.sometimescreativemode.config.Config;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,8 +26,7 @@ public class CommandHandler implements CommandExecutor {
 
         // configコマンド処理
         if (args.length == 1 && CommandError.existSubCommand(0)) {
-            //TODO コンフィグ表示
-            sender.sendMessage("コンフィグ表示");
+            Config.show(sender);
             return true;
         }
 
@@ -37,8 +37,15 @@ public class CommandHandler implements CommandExecutor {
                 CommandError.canCombine(CommandData.getCommand(args[0]), CommandData.getCommand(args[1])) &&
                 CommandError.isCorrectArgsLength(3)
         ) {
-            //TODO コンフィグ変更
-            sender.sendMessage("コンフィグ変更");
+            switch (CommandData.getCommand(args[1])) {
+                case SURVIVAL_TIME:
+                    Config.setSurvivalTime(sender, args[2]);
+                    break;
+                case CREATIVE_TIME:
+                    Config.setCreativeTime(sender, args[2]);
+                    break;
+
+            }
             return true;
         }
 
