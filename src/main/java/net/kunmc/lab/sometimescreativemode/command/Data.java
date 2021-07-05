@@ -2,7 +2,7 @@ package net.kunmc.lab.sometimescreativemode.command;
 
 import java.util.Arrays;
 
-public enum CommandData {
+public enum Data {
     MAIN("sometimescreative"),
     CONFIG("config"),
     CREATIVE_TIME("creative-time"),
@@ -10,7 +10,7 @@ public enum CommandData {
 
     private String commandName;
 
-    CommandData(String commandName) {
+    Data(String commandName) {
         this.commandName = commandName;
     }
 
@@ -24,8 +24,8 @@ public enum CommandData {
     /**
      * 入力された文字列からコマンドを引き当てる.
      * */
-    public static CommandData getCommand(String commandName) {
-        return Arrays.stream(CommandData.values())
+    public static Data getCommand(String commandName) {
+        return Arrays.stream(Data.values())
                 .filter(data -> data.commandName().equalsIgnoreCase(commandName))
                 .findFirst()
                 .orElse(null);

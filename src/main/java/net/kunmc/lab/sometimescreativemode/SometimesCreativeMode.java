@@ -1,9 +1,10 @@
 package net.kunmc.lab.sometimescreativemode;
 
-import net.kunmc.lab.sometimescreativemode.command.CommandData;
-import net.kunmc.lab.sometimescreativemode.command.CommandHandler;
+import net.kunmc.lab.sometimescreativemode.command.Data;
+import net.kunmc.lab.sometimescreativemode.command.Handler;
 import net.kunmc.lab.sometimescreativemode.command.TabComplete;
 import net.kunmc.lab.sometimescreativemode.config.Config;
+import net.kunmc.lab.sometimescreativemode.game.Manager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SometimesCreativeMode extends JavaPlugin {
@@ -19,12 +20,19 @@ public final class SometimesCreativeMode extends JavaPlugin {
         Config.loadConfig();
 
         // コマンド
-        getCommand(CommandData.MAIN.commandName()).setExecutor(new CommandHandler());
-        getCommand(CommandData.MAIN.commandName()).setTabCompleter(new TabComplete());
+        getCommand(Data.MAIN.commandName()).setExecutor(new Handler());
+        getCommand(Data.MAIN.commandName()).setTabCompleter(new TabComplete());
+
+        // タスク
+        Manager.startTask();
+
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        saveConfig();
     }
+
+
 }

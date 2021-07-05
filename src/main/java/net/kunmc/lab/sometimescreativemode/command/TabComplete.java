@@ -33,7 +33,7 @@ public class TabComplete implements TabCompleter {
      */
     private List<String> firstArgs() {
         return Stream.of(
-                CommandData.CONFIG.commandName())
+                Data.CONFIG.commandName())
                 .filter(e -> e.startsWith(arguments[0]))
                 .collect(Collectors.toList());
     }
@@ -42,13 +42,13 @@ public class TabComplete implements TabCompleter {
      * 第2引数の補完
      */
     private List<String> secondArgs() {
-        if (!arguments[0].equals(CommandData.CONFIG.commandName())) {
+        if (!arguments[0].equals(Data.CONFIG.commandName())) {
             return new ArrayList<>();
         }
 
         return Stream.of(
-                CommandData.CREATIVE_TIME.commandName(),
-                CommandData.SURVIVAL_TIME.commandName())
+                Data.CREATIVE_TIME.commandName(),
+                Data.SURVIVAL_TIME.commandName())
                 .filter(e -> e.startsWith(arguments[1]))
                 .collect(Collectors.toList());
     }
@@ -57,8 +57,8 @@ public class TabComplete implements TabCompleter {
      * 第3引数の補完
      */
     private List<String> thirdArgs() {
-        if (arguments[1].equalsIgnoreCase(CommandData.CREATIVE_TIME.commandName()) ||
-                arguments[1].equalsIgnoreCase(CommandData.SURVIVAL_TIME.commandName())) {
+        if (arguments[1].equalsIgnoreCase(Data.CREATIVE_TIME.commandName()) ||
+                arguments[1].equalsIgnoreCase(Data.SURVIVAL_TIME.commandName())) {
             return Collections.singletonList("<秒数>");
         }
 

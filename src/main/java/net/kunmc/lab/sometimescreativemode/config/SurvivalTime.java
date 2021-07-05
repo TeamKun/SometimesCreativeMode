@@ -1,21 +1,15 @@
 package net.kunmc.lab.sometimescreativemode.config;
 
-public class SurvivalTime {
-    private int value;
-
-    SurvivalTime(int value) {
-        if (value <= 0) {
-            value = 1;
+public class SurvivalTime extends TimeLimit{
+    SurvivalTime(int limit) {
+        if (limit <= 0) {
+            limit = 1;
         }
 
-        if (value > 1000) {
-            value = 1000;
+        if (limit > 1000) {
+            limit = 1000;
         }
 
-        this.value = value;
-    }
-
-    public int value() {
-        return this.value;
+        super.limit = limit;
     }
 }

@@ -1,22 +1,16 @@
 package net.kunmc.lab.sometimescreativemode.config;
 
-public class CreativeTime {
+public class CreativeTime extends TimeLimit{
 
-    private int value;
-
-    CreativeTime(int value) {
-        if (value <= 0) {
-            value = 1;
+    CreativeTime(int limit) {
+        if (limit <= 0) {
+            limit = 1;
         }
 
-        if (value > 30) {
-            value = 30;
+        if (limit > 30) {
+            limit = 30;
         }
 
-        this.value = value;
-    }
-
-    public int value() {
-        return this.value;
+        super.limit = limit;
     }
 }
